@@ -1,18 +1,27 @@
+import Image from "next/image";
+import { mockImages } from "@/components/medivet/mock-image";
+
 const vets = [
   {
     name: "Dr. Jane Smith, DVM",
     role: "Lead veterinarian",
     bio: "Board-certified with a focus on soft-tissue surgery and urgent care.",
+    image: mockImages.vetPortrait1,
+    imageAlt: "Portrait of a veterinarian — mock photo",
   },
   {
     name: "Dr. Alex Rivera, DVM",
     role: "Associate veterinarian",
     bio: "Passionate about preventive care and fear-free handling for cats and dogs.",
+    image: mockImages.vetPortrait2,
+    imageAlt: "Portrait of a veterinarian with a pet — mock photo",
   },
   {
     name: "Dr. Sam Patel, DVM",
     role: "Emergency & critical care",
     bio: "Experienced in after-hours emergencies and stabilizing critical cases.",
+    image: mockImages.vetPortrait3,
+    imageAlt: "Clinical team member — mock photo",
   },
 ];
 
@@ -39,11 +48,16 @@ export function MeetVets() {
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {vets.map((v) => (
             <li key={v.name} className="flex flex-col">
-              <div
-                className="aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-teal-100 to-slate-200"
-                role="img"
-                aria-label={`${v.name}, Medivet veterinarian`}
-              />
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+                <Image
+                  src={v.image}
+                  alt={v.imageAlt}
+                  width={800}
+                  height={600}
+                  className="h-full w-full object-cover"
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+                />
+              </div>
               <h3 className="mt-4 text-lg font-semibold text-slate-900">
                 {v.name}
               </h3>
@@ -54,6 +68,9 @@ export function MeetVets() {
             </li>
           ))}
         </ul>
+        <p className="mt-8 text-center text-xs text-slate-500">
+          Vet portraits shown are mock stock images for layout preview.
+        </p>
       </div>
     </section>
   );
