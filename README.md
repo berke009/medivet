@@ -18,6 +18,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## GitHub (MCP and headless push)
+
+- **GitHub MCP (Cursor):** `.cursor/mcp.json` runs `bash .cursor/run-github-mcp.sh`, which exports `GITHUB_PERSONAL_ACCESS_TOKEN` from `GITHUB_PERSONAL_ACCESS_TOKEN`, `GITHUB_TOKEN`, `GH_TOKEN`, or Paperclip CEO `Github` so `@modelcontextprotocol/server-github` starts without putting a PAT in JSON.
+- **Non-interactive `git push`:** use `scripts/safe-github-push.sh` so tokens are not stored in `.git/config`.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
